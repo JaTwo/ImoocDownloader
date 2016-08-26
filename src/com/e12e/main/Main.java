@@ -103,7 +103,7 @@ public class Main {
 					try {
 						GetInfo.doGetInfo(classNo, title);
 
-						System.out.println("course_info.txt\t生成成功！");
+						System.out.println("课程信息 course_info.txt 生成成功！");
 					} catch (Exception e2) {
 						e2.printStackTrace();
 						System.out.println("生成course_info.txt时出现异常！");
@@ -113,7 +113,7 @@ public class Main {
 					// 生成course_list.html
 					try {
 						GetList.doGetList(videos, savePath);
-						System.out.println("course_list.html\t生成成功！");
+						System.out.println("课程列表 course_list.html 生成成功！");
 					} catch (Exception e1) {
 						System.out.println("生成course_list.html时出现异常！");
 					}
@@ -165,7 +165,7 @@ public class Main {
 					.println("\n【"
 							+ title
 							+ "】课程的下载任务已完成！！！\n已下载到该程序所在目"
-							+ "录download文件夹下。\n慕课网视频批量下载工具 v1.5  By Coande"
+							+ "录download文件夹下。\n慕课网视频批量下载工具 v1.6  By Coande"
 							+ "\n----------------------------------------------------------\n");
 		}
 	}
