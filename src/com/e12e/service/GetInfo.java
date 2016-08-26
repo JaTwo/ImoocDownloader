@@ -37,10 +37,10 @@ public class GetInfo {
 		String author = doc.select("span.tit a").html();
 		txtWriter.write("【讲师】：" + author + "\r\n");
 
-		String time = doc.select(".static-time span").first().text();
+		String time = doc.select(".static-item").get(2).select("span.meta-value").text();
 		txtWriter.write("【时长】：" + time + "\r\n");
 
-		String hard = doc.select(".statics .static-item span").first().text();
+		String hard = doc.select(".static-item").get(1).select("span.meta-value").text();
 		txtWriter.write("【难度】：" + hard + "\r\n\r\n\r\n");
 
 		String intruc = doc.select(".auto-wrap").html();
@@ -53,11 +53,11 @@ public class GetInfo {
 		txtWriter.write("【老师告诉你能学到什么？】\r\n" + what + "\r\n\r\n\r\n");
 
 		txtWriter.write("【课程提纲】：\r\n\r\n");
-		Elements chapters = doc.select(".chapter-bd");
+		Elements chapters = doc.select(".chapter h3 strong");
 		for (Element chapter : chapters) {
-			String chaptername = chapter.select("h5").html();
+			String chaptername = chapter.textNodes().get(1).text().trim();
 			txtWriter.write(chaptername + "\r\n");
-			String chapterdesc = chapter.select("p").html();
+			String chapterdesc = chapter.select(".chapter-content").text().trim();
 			txtWriter.write(chapterdesc + "\r\n\r\n");
 
 		}

@@ -60,7 +60,7 @@ public class Main {
 			savePath = "./download/" + title + "/";
 			File file = new File(savePath);
 
-			Elements videos = doc.select(".video a");
+			Elements videos = doc.select("ul.video a");
 			if (title.equals("") && videos.size() == 0) {
 				System.out.println("抱歉，没有该课程！\n");
 				continue;
@@ -70,7 +70,6 @@ public class Main {
 			int count = 0;
 			for (Element video : videos) {
 				videoNos = video.attr("href").split("/");
-
 				// 如果该课程不是视频则不用下载
 				if (!videoNos[1].equals("video")) {
 					continue;
@@ -106,6 +105,7 @@ public class Main {
 
 						System.out.println("course_info.txt\t生成成功！");
 					} catch (Exception e2) {
+						e2.printStackTrace();
 						System.out.println("生成course_info.txt时出现异常！");
 
 					}
@@ -126,8 +126,8 @@ public class Main {
 				}
 
 				// 获得视频课程名称并过滤特殊字符
-				videoName = video.html()
-						.substring(0, video.html().length() - 7).trim();
+				videoName = video.textNodes().get(1).text()
+						.substring(0, video.textNodes().get(1).text().length() - 8).trim();
 				videoName = videoName.replaceAll("[\\\\/:\\*\\?\"<>\\|]", "#");
 				videoNo = videoNos[2];
 

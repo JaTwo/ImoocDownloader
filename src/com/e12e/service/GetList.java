@@ -39,15 +39,14 @@ public class GetList {
 
 			// 记录在html中：
 			if (!videoNos[1].equals("video")) {
-				codeName = video.html().trim();
+				codeName = video.textNodes().get(1).text().trim();
 				htmlText += "<tr><td>" + curruntGlobalCount + "</td><td>"
 						+ codeName + "</td><td><a href='" + url
 						+ "'>去慕课网练习*</a></td></tr>\n";
 				continue;
 			} else {
 				// 获得视频课程名称
-				videoName = video.html()
-						.substring(0, video.html().length() - 7).trim();
+				videoName = video.textNodes().get(1).text().trim();
 
 				htmlText += "<tr><td>" + curruntGlobalCount + "</td><td>"
 						+ videoName + "</td><td><a href='" + url
